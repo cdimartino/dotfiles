@@ -16,4 +16,5 @@ export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
+export PATH="$PATH:/usr/local/Cellar/tmuxinator/2.0.1/libexec/bin"
 

@@ -10,15 +10,14 @@
 [credential]
         helper = osxkeychain
 [alias]
-    lol = ! LOLCOMMITS_CAPTURE_DISABLED=false git commit
-        pf = push --force-with-lease
-        pu = pull
-        ci = commit
-        co = checkout
-        promote = !$ZSH/bin/git-promote
-        wtf     = !$ZSH/bin/git-wtf
-        rank-contributors = !$ZSH/bin/git-rank-contributors
-        count   = !git shortlog -sn
+    pf = push --force-with-lease
+    pu = pull
+    ci = commit
+    co = checkout
+    promote = !$ZSH/bin/git-promote
+    wtf     = !$ZSH/bin/git-wtf
+    rank-contributors = !$ZSH/bin/git-rank-contributors
+    count   = !git shortlog -sn
     find-merge = "!sh -c 'commit=$0 && branch=${1:-HEAD} && (git rev-list $commit..$branch --ancestry-path | cat -n; git rev-list $commit..$branch --first-parent | cat -n) | sort -k2 -s | uniq -f1 -d | sort -n | tail -1 | cut -f2'"
     show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
     morning     = "! git-morning"
@@ -27,12 +26,13 @@
     #show-merged = "!git branch --merged | grep -v '(master|qa-integrations-team)'"
     #prune-merged = "sh -c 'git branch --merged | grep -v \"(^master|qa-integrations-team)\"'"
     #git branch --merged | egrep -v "(^\*|master|qa-integrations-team)" | xargs git branch -d
-	st = status
-	recent = "for-each-ref --count=10 --sort=-committerdate refs/heads/ --format=\"%(refname:short)\""
-	ls = log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate
-	ll = log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat
+    st = status
+    recent = "for-each-ref --count=10 --sort=-committerdate refs/heads/ --format=\"%(refname:short)\""
+    ls = log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate
+    ll = log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat
     pr = "!sh -c 'base=$0 && git log $base..HEAD --pretty=tformat:\"- %h %s\" | tac | pbcopy'"
     prm = "!sh -c 'git log master..HEAD --pretty=tformat:\"- %h %s\" | tac | pbcopy'"
+    prma = "!sh -c 'git log main..HEAD --pretty=tformat:\"- %h %s\" | tac | pbcopy'"
     wip = "!sh -c 'git add .; git commit -m WIP'"
     unwip = "reset HEAD~"
     rbm = "rebase -i master"
@@ -44,6 +44,7 @@
 [core]
         excludesfile = ~/.gitignore
         editor = vim
+	attributesfile = /Users/cdimartino/.gitattributes
 [apply]
         whitespace = nowarn
 [help]
@@ -76,5 +77,8 @@
 	autoSquash = true
 [pull]
 	default = current
+	rebase = false
 [branch]
 	autoSetupMerge = always
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"

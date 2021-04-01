@@ -18,8 +18,12 @@ alias gcb='git copy-branch-name'
 alias gb='git branch'
 alias gsb='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias grim='git rebase -i master'
+alias grima='git rebase -i main'
 alias gric='git rebase --continue'
 alias gsha='git shamend'
+alias gsf='git add . && git shamend && git pf'
+alias gfu='git commit --fixup'
+alias gcm='git commit -m'
 
 gps() {
   git push origin `git rev-parse --abbrev-ref HEAD`:staging

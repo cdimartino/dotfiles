@@ -1,13 +1,19 @@
 #!/bin/sh
 
-if test ! $(which rbenv)
+if test ! $(which asdf)
 then
-  echo "  Installing rbenv for you."
-  brew install rbenv > /tmp/rbenv-install.log
+  echo "  Installing asdf for you."
+  brew install asdf > /tmp/asdf-install.log
 fi
 
-if test ! $(which ruby-build)
+if test ! $(asdf plugin list | grep ruby)
 then
-  echo "  Installing ruby-build for you."
-  brew install ruby-build > /tmp/ruby-build-install.log
+  echo "  Installing asdf-ruby for you."
+  asdf plugin add ruby > /tmp/asdf-ruby-install.log
+fi
+
+if test ! $(which ruby-install)
+then
+  echo "  Installing ruby-install for you."
+  brew install ruby-install > /tmp/ruby-install-install.log
 fi
