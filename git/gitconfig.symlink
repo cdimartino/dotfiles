@@ -22,7 +22,7 @@
     show-merge = "!sh -c 'merge=$(git find-merge $0 $1) && [ -n \"$merge\" ] && git show $merge'"
     morning     = "! git-morning"
     show-assume-unchanged = "!git ls-files -v | grep '^h'"
-    #morning    = "!git checkout master; git pull --prune; bundle install && yarn install --pure-lockfile --check-files && yarn postinstall && bundle exec rake db:migrate db:test:prepare && git checkout db/structure.sql && git checkout -"
+    morning    = "!git-morning"
     #show-merged = "!git branch --merged | grep -v '(master|qa-integrations-team)'"
     #prune-merged = "sh -c 'git branch --merged | grep -v \"(^master|qa-integrations-team)\"'"
     #git branch --merged | egrep -v "(^\*|master|qa-integrations-team)" | xargs git branch -d

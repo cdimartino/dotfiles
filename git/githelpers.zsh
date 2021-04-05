@@ -122,10 +122,7 @@ goodmorning() {
 
   if [ -f package.json ]; then
     goodmorning_echo_green "Running yarn install..."
-    # Safer:
-    # yarn install --pure-lockfile --check-files && yarn postinstall
-    # Faster:
-    yarn install --pure-lockfile || goodmorning_echo_yellow "Failed to yarn install!"
+    yarn install || goodmorning_echo_yellow "Failed to yarn install!"
     goodmorning_empty_lines 3
   fi
 
